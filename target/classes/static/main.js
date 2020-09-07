@@ -11,11 +11,13 @@ function  main() {
 async function reload() {
 	clear();
 
-	var notes = await getNotes();
+	let notes = await getNotes();
 
-	notes.forEach(note => {
-		renderNote(note);
-	});
+	// notes.forEach(note => {
+	// 	renderNote(note);
+	// });
+
+	notes.forEach(renderNote);
 }
 
 function closeAddNote() {
@@ -57,7 +59,7 @@ async function addNote(title, content, password) {
 	    }`
 	});
 
-	return await response.json()
+	return await response.json();
 }
 
 async function clickDeleteNote(id){
@@ -93,9 +95,9 @@ async function deleteNote(id) {
 
 function renderNote(note) {
 	var elem = $(`
-		<button type="button" class="btn btn-primary" onclick="clickDeleteNote(${note.id})">delete</button>
-		<br>
-		<h2>${note.title}</h1>
+		
+			<button type="button"  class="btn btn-primary float-right" onclick="clickDeleteNote(${note.id})">delete</button>
+		<h2>${note.title}</h2>
 		<p class="lead">${note.content}</p>
 		<br>
 	`);
